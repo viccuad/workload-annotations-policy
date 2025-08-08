@@ -1,0 +1,25 @@
+
+[package]
+authors = ["Kubewarden Developers <cncf-kubewarden-maintainers@lists.cncf.io>"]
+edition = "2018"
+name    = "workload-annotations-policy"
+version = "0.1.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = "1.0"
+criteria_policy_base = { git = "https://github.com/viccuad/environment-variable-policy.git", branch = "refactor/subcrate", package = "criteria_policy_base", features = [
+  "annotations",
+] }
+k8s-openapi = { version = "0.25.0", default-features = false, features = [
+  "v1_32",
+] }
+regex = "1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[dev-dependencies]
+rstest     = "0.26.0"
+serde_yaml = "0.9"
